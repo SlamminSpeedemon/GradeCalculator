@@ -30,6 +30,20 @@ def clearInput(): #clears input on add grades window
     for i in range(len(listOfObjs)):
         listOfObjs[i].clearInfo()
 
+def summary(): #prints summary in window where it can be copy pasted
+    summaryWindow = Tk()
+    summaryWindow.geometry('200x200')
+    summaryWindow.title('1453 - Grade Program - Copy paste text')
+
+    copyEntry = Entry(summaryWindow)
+    copyEntry.place(x=20,y=50)
+
+    copyString = ""
+    for i in range(len(listOfObjs)):
+        copyString += listOfObjs[i].getName() + "\t" + str(len(listOfObjs[i].getList())) + "\t" +  str(listOfObjs[i].getAverage()) + "\t" + str(listOfObjs[i].getMax()) + "\t" + str(listOfObjs[i].getMin()) + "\n"
+
+    copyEntry.insert(0,copyString)
+
 # Window functions (all codes are wrapped in functions)
 def AddGrades():  # opens new window to add grades
     # Grade Adder GUI
@@ -60,6 +74,8 @@ def AddGrades():  # opens new window to add grades
     Button(gradeWindow, text='Clear', bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: clearInput()).place(
         x=xPos + 240, y=yPos + 6 * yPosChanger)
 
+    gradeWindow.mainloop()
+
 
 def normalWindow():
     # This is the section of code which creates the main window
@@ -88,8 +104,8 @@ def normalWindow():
     historyObj.GUIstart(xStart - 45, yStart + 5 * yAdd)
 
     # Buttons
-    Button(root, text='Add Grades', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: AddGrades()).place(
-        x=227, y=443)
+    Button(root, text='Add Grades', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: AddGrades()).place(x=227, y=443)
+    Button(root, text='Print Summary', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: summary()).place(x=420, y=443)
 
     root.mainloop()
 
