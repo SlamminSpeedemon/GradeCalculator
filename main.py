@@ -5,7 +5,7 @@ from Course import *
 
 root = Tk()
 # make course objects
-programmingObj = Course("Programming", root)
+programmingObj = Course("Coding", root)
 artObj = Course("Art", root)
 scienceObj = Course("Science", root)
 mathObj = Course("Math", root)
@@ -54,14 +54,14 @@ def AddGrades():  # opens new window to add grades
 
 def normalWindow():
     # This is the section of code which creates the main window
-    root.geometry('826x504')
+    root.geometry('896x504')
     root.configure(background='#F0F8FF')
     root.title('1453 - Grade Program')
 
     # GUI variables
     xStart = 65
-    xAdd = 150
-    yStart = 150
+    xAdd = 170
+    yStart = 50
     yAdd = 50
 
     # Labels
@@ -72,11 +72,11 @@ def normalWindow():
     Label(root, text="Low: ", bg='#F0F8FF', font=('arial', 16, 'bold')).place(x=xStart + 4 * xAdd, y=23)
 
     # tell objects to display info
-    programmingObj.GUIstart(xStart, yStart + 1 * yAdd)
-    artObj.GUIstart(xStart, yStart + 2 * yAdd)
-    scienceObj.GUIstart(xStart, yStart + 3 * yAdd)
-    mathObj.GUIstart(xStart, yStart + 4 * yAdd)
-    historyObj.GUIstart(xStart, yStart + 5 * yAdd)
+    programmingObj.GUIstart(xStart - 45, yStart + 1 * yAdd)
+    artObj.GUIstart(xStart - 45, yStart + 2 * yAdd)
+    scienceObj.GUIstart(xStart - 45, yStart + 3 * yAdd)
+    mathObj.GUIstart(xStart - 45, yStart + 4 * yAdd)
+    historyObj.GUIstart(xStart - 45, yStart + 5 * yAdd)
 
     # Buttons
     Button(root, text='Add Grades', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: AddGrades()).place(
