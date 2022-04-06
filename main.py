@@ -11,15 +11,22 @@ scienceObj = Course("Science", root)
 mathObj = Course("Math", root)
 historyObj = Course("History", root)
 
+listOfObjs = [programmingObj, artObj, scienceObj, mathObj, historyObj]
 
 # define functions
-def takeGrades():
-    programmingObj.takeGUIGrade()
-    artObj.takeGUIGrade()
-    scienceObj.takeGUIGrade()
-    mathObj.takeGUIGrade()
-    historyObj.takeGUIGrade()
+def takeGrades(): #does not work with list of objects iterator i for some reason
+    for i in range(len(listOfObjs)):
+        newList = listOfObjs[i].getList()
+        try:
+            if round(int(listOfObjs[i].takeGUIGrade())) > 0:
+                newList.append(round(int(listOfObjs[i].takeGUIGrade())))
+        except:
+            print("Error in grade input for " + listOfObjs[i].getName())
+        listOfObjs[i].setList(newList)
 
+def clearInput(): #clears input on add grades window
+    for i in range(len(listOfObjs)):
+        listOfObjs.clear()
 
 # Window functions (all codes are wrapped in functions)
 def AddGrades():  # opens new window to add grades

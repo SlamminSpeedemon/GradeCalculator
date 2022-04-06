@@ -2,16 +2,16 @@ from tkinter import *
 class Course:
     def __init__(self, courseName, window):
         self.name = courseName
-        self.scoreList = [10,6,5,2]
+        self.scoreList = []
         self.root = window
         self.courseString = StringVar()
 
-    def addScore(self, score):
-        print(type(self.scoreList))
-        try:
-            self.scoreList.append(1)#round(int(score)))
-        except:
-            print("Invalid entry for",self.name)
+    def setList(self, newList): #using an append statement messes stuff up
+        self.scoreList = newList
+        self.GUIUpdate()
+
+    def getList(self):
+        return self.scoreList
 
     def getMax(self):
         return max(self.scoreList)
@@ -26,7 +26,7 @@ class Course:
         return counter
 
     def getAverage(self):
-            return self.getSummation()/len(self.scoreList)
+            return round(self.getSummation()/len(self.scoreList),3)
 
     def GUIstart(self, xPos,yPos):
         self.GUIUpdate()
@@ -45,5 +45,10 @@ class Course:
         self.tempEntry.place(x=xPos + 200,y=yPos + 8)
 
     def takeGUIGrade(self):
-        print(self.tempEntry.get())
-        self.addScore(self.tempEntry.get())
+        return self.tempEntry.get()
+
+    def getName(self):
+        return self.name
+
+    def clearInput(self):
+        self.tempEntry.delete(0,999)
