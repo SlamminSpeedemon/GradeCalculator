@@ -18,15 +18,17 @@ def takeGrades(): #does not work with list of objects iterator i for some reason
     for i in range(len(listOfObjs)):
         newList = listOfObjs[i].getList()
         try:
-            if round(int(listOfObjs[i].takeGUIGrade())) > 0:
+            if round(int(listOfObjs[i].takeGUIGrade())) > 0 and round(int(listOfObjs[i].takeGUIGrade())) <= 100:
                 newList.append(round(int(listOfObjs[i].takeGUIGrade())))
+            else:
+                print("Out of range input for " + listOfObjs[i].getName())
         except:
             print("Error in grade input for " + listOfObjs[i].getName())
         listOfObjs[i].setList(newList)
 
 def clearInput(): #clears input on add grades window
     for i in range(len(listOfObjs)):
-        listOfObjs.clear()
+        listOfObjs[i].clearInfo()
 
 # Window functions (all codes are wrapped in functions)
 def AddGrades():  # opens new window to add grades
@@ -55,7 +57,7 @@ def AddGrades():  # opens new window to add grades
     # Button to add scores
     Button(gradeWindow, text='Add', bg='#8B8378', font=('arial', 18, 'normal'), command=lambda: takeGrades()).place(
         x=xPos, y=yPos + 6 * yPosChanger)
-    Button(gradeWindow, text='Clear', bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: takeGrades()).place(
+    Button(gradeWindow, text='Clear', bg='#CD5B45', font=('arial', 18, 'normal'), command=lambda: clearInput()).place(
         x=xPos + 240, y=yPos + 6 * yPosChanger)
 
 

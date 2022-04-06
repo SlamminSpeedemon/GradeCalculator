@@ -50,5 +50,5 @@ class Course:
     def getName(self):
         return self.name
 
-    def clearInput(self):
+    def clearInfo(self):
         self.tempEntry.delete(0,999)
