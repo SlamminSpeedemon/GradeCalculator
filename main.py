@@ -17,9 +17,13 @@ listOfObjs = [programmingObj, artObj, scienceObj, mathObj, historyObj]
 def takeGrades(): #does not work with list of objects iterator i for some reason
     for i in range(len(listOfObjs)):
         newList = listOfObjs[i].getList()
+
         try:
-            if round(int(listOfObjs[i].takeGUIGrade())) > 0 and round(int(listOfObjs[i].takeGUIGrade())) <= 100:
-                newList.append(round(int(listOfObjs[i].takeGUIGrade())))
+            tempHolder = str(listOfObjs[i].takeGUIGrade())
+            deployNum = round(float(tempHolder), 3)
+            print("integer", deployNum)
+            if deployNum > 0 and deployNum<= 100:
+                newList.append(deployNum)
             else:
                 print("Out of range input for " + listOfObjs[i].getName())
         except:
