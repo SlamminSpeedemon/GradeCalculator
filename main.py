@@ -40,8 +40,10 @@ def summary(): #prints summary in window where it can be copy pasted
 
     copyString = ""
     for i in range(len(listOfObjs)):
-        copyString += listOfObjs[i].getName() + "\t" + str(len(listOfObjs[i].getList())) + "\t" +  str(listOfObjs[i].getAverage()) + "\t" + str(listOfObjs[i].getMax()) + "\t" + str(listOfObjs[i].getMin()) + "\n"
-
+        if len(listOfObjs[i].getList()) > 0:
+            copyString += listOfObjs[i].getName() + "\t" + str(len(listOfObjs[i].getList())) + "\t" +  str(listOfObjs[i].getAverage()) + "\t" + str(listOfObjs[i].getMax()) + "\t" + str(listOfObjs[i].getMin()) + "\n"
+        else:
+            copyString += "No info" + "\n"
     copyEntry.insert(0,copyString)
 
 # Window functions (all codes are wrapped in functions)
